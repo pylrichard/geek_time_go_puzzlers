@@ -13,6 +13,7 @@ func main() {
 			channel1 <- i
 		}
 		fmt.Println("Sender: close the channel...")
+		//由发送方关闭通道，因为向已关闭的通道发送数据，会引发panic
 		close(channel1)
 	}()
 
