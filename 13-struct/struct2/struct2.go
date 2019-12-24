@@ -43,11 +43,13 @@ func (cat Cat) String() string {
 
 func main() {
 	cat := New("little pig", "American Shorthair", "cat")
-	//自动转译为(&cat).SetName("monster")
+	//自动转译为(&cat).SetName("monster")，设置原值的名字
 	cat.SetName("monster")
 	fmt.Printf("The cat: %s\n", cat)
 
+	//设置副本的名字
 	cat.SetNameOfCopy("little pig")
+	//原值不会改变
 	fmt.Printf("The cat: %s\n", cat)
 
 	type Pet interface {
@@ -57,8 +59,10 @@ func main() {
 		ScientificName() string
 	}
 
+	//基本类型和它的指针类型的方法集合是不同的
 	_, ok := interface{}(cat).(Pet)
 	fmt.Printf("Cat implements interface Pet: %v\n", ok)
+	//指针类型包含SetName()指针方法
 	_, ok = interface{}(&cat).(Pet)
 	fmt.Printf("*Cat implements interface Pet: %v\n", ok)
 }
