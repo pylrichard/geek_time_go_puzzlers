@@ -57,11 +57,11 @@ func main() {
 		//可以使用if语句和判等操作符
 		switch uError {
 		case os.ErrClosed:
-			fmt.Printf("error(closed)[%d]: %s\n", i, err)
+			fmt.Printf("error(closed)[%d]: %s\n", i, uError)
 		case os.ErrInvalid:
-			fmt.Printf("error(invalid)[%d]: %s\n", i, err)
+			fmt.Printf("error(invalid)[%d]: %s\n", i, uError)
 		case os.ErrPermission:
-			fmt.Printf("error(permission)[%d]: %s\n", i, err)
+			fmt.Printf("error(permission)[%d]: %s\n", i, uError)
 		}
 	}
 	var f *os.File
@@ -109,13 +109,13 @@ func main() {
 		}
 		uError = underlyingError(err)
 		if os.IsExist(uError) {
-			fmt.Printf("error(exist)[%d]: %s\n", i, err)
-		} else if os.IsNotExist(err) {
-			fmt.Printf("error(not exist)[%d]: %s\n", i, err)
-		} else if os.IsPermission(err) {
-			fmt.Printf("error(permission)[%d]: %s\n", i, err)
+			fmt.Printf("error(exist)[%d]: %s\n", i, uError)
+		} else if os.IsNotExist(uError) {
+			fmt.Printf("error(not exist)[%d]: %s\n", i, uError)
+		} else if os.IsPermission(uError) {
+			fmt.Printf("error(permission)[%d]: %s\n", i, uError)
 		} else {
-			fmt.Printf("error(other)[%d]: %s\n", i, err)
+			fmt.Printf("error(other)[%d]: %s\n", i, uError)
 		}
 	}
 	{
