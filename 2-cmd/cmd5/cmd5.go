@@ -7,9 +7,8 @@ import (
 )
 
 var name string
-/*
-	更灵活地定制命令参数容器，定制不会影响到全局变量flag.CommandLine
- */
+
+// 更灵活地定制命令参数容器，定制不会影响到全局变量flag.CommandLine
 var cmdLine = flag.NewFlagSet("question", flag.ExitOnError)
 
 func init() {
